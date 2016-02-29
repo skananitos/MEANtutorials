@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Skananitos' handlebars</title>
+
+	<style type="text/css">
+      .blueText {color: blue;}
+      .greenText {color: green;}
+	</style>
+	
+	<script src="handlebars-v4.0.5.js"></script>
+	<script src="pageContent.js"></script>
+</head>
+<body>
+
+<div id="skananitos"></div>
+
+<script type="text/javascript">
+
+	var template = Handlebars.templates['pageContent'];
+
+	Handlebars.registerHelper("sayHello", function(options){
+    switch(options.data.lang){
+      case "spanish":
+        return "Hola";
+        break;
+      case "french":
+        return "Bonjour";
+        break;
+      default:
+        return "Hello";
+   	 }
+  	});
+
+  	Handlebars.registerPartial("myName", '<{{tagName}}>{{name}}</{{tagName}}>');
+
+  	Handlebars.registerPartial("myRep", '{{{name}}}, {{{version}}}, {{{description}}}' + '<br />');
+
+	Handlebars.registerHelper("with", function(context, options){
+		return options.fn(context);
+	});
+
+	Handlebars.registerHelper("twitterLink", function(ref, url){
+		ref = Handlebars.Utils.escapeExpression(ref);
+		url = Handlebars.Utils.escapeExpression(url);
+
+		var twitterLink = '<a href="' + url + '">' + ref + '</a>';
+
+		return new Handlebars.SafeString(twitterLink);
+		});
+
+	Handlebars.registerHelper("myColor", function(text, options){
+
+	    text = Handlebars.Utils.escapeExpression(text);
+
+	    if(options.hash.color === "blue"){
+	        return new Handlebars.SafeString("<span class='blueText'>" + text + "</span>");
+	    }  else {
+	          return new Handlebars.SafeString("<span class='greenText'>" + text + "</span>");
+	    }
+  	});
+
+	Handlebars.registerHelper("radioBtn", function(text, options){
+		var radioList = options.fn();
+
+		radioList = radioList.trim().split("\n");
+
+		var output = "";
+
+		for (var val in radioList){
+			var item = radioList[val].trim();
+			output += '<input type="radio" name="' + text + '" value="' + item + '">' + item + '<br />';
+		}
+		return output;			      
+  	});
+
+	Handlebars.registerHelper("inputCheck", function(data, options){
+		if (data === "feedback"){
+			return options.fn(this);			
+		} else {
+			return options.inverse(this);
+		}
+	});
+
+	var bioData = template({
+		name:"Skananitos", 
+		job:"Web developer", 
+		techs: [
+			{tech:"HTML5"},
+			{tech:"CSS3"},
+			{tech:"Bootstrap"},
+			{tech:"PHP"},
+			{tech:"JavaScript"},
+			{tech:"MEAN Stack"}
+		],
+		bio:"<strong><em>A life-long-learner, highly effective in promoting a positive, productive environment.</em></strong>",
+		projects: [
+			{
+				name: "<strong>handlebars-tutorial</strong>",
+				version: "v0.0.1",
+				description: "<em>A brief tutorial on Handlebars.</em>"
+			},
+			{
+				name: "<strong>mongodb-tutorial</strong>",
+				version: "v0.0.1",
+				description: "<em>A brief tutorial on MongoDB.</em>"
+			},
+			{
+				name: "<strong>webServer</strong>",
+				version: "v0.0.1",
+				description: "<em>Node.js: Create a web server - listen a port, receive http request, send response.</em>"
+			}
+
+		],
+		papers: {
+			title: "<em>A Recommendation System for Relational Databases</em>",
+			author: "E. Koletsou, K. Stefanidis, M. Drosou, E. Pitoura",
+			year: "2010"
+		}
+	},
+	{data: {
+	    lang: "french"
+	  	}
+	});
+
+	document.getElementById("skananitos").innerHTML += bioData;
+
+</script>
+
+
+</body>
+</html>

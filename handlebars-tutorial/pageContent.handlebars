@@ -1,0 +1,43 @@
+<h3>About me</h3>
+
+	<p class="greenText">{{{bio}}}</p>
+
+	<p>{{sayHello}}! My name is {{{name}}} and I am a  {{job}}. I am specialized on:</p>
+
+	<ol>
+	{{#each techs}}
+	<li>{{tech}}</li>
+	{{/each}}
+	</ol>	
+
+	<p>GitHub selected repositories: 
+	<br />
+	{{#each projects}}
+		{{> myRep}}
+	{{/each}}
+	</p>
+
+	<p>Publications:
+	{{#with papers}}	
+	{{{author}}},	
+	{{{title}}},
+	{{{year}}}
+	{{/with}}
+	</p>
+	
+	<p>Follow {{> myName tagName="em"}} on {{twitterLink "Twitter" "http://twitter.com/skananitos"}}</p>
+
+	{{myColor "Was this tutorial helpful?" color="blue"}}<br />
+	
+    {{#radioBtn "answers"}}
+        Yes
+        Somewhat
+        No
+    {{/radioBtn}}<br />
+    
+
+    {{#inputCheck "no-feedback"}}
+    Thank you for your feedback!
+    {{else}}
+    Please send me your feedback.
+    {{/inputCheck}}

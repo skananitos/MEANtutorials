@@ -1,0 +1,245 @@
+//- Author: Eftychia Koletsou
+//- version: 0.0.1
+//- ==========================
+
+
+//- Define doctype
+doctype
+
+//- Define the html tag
+html(lang="en")
+
+//- Include head.jade
+include ./head.jade
+
+//- Define the body
+body
+
+	//- Define divs
+	div
+
+		//- -----Paragraphs, ids, classes and different ways to display them-----
+
+		h3 Greek History
+
+		p  This article covers the Greek civilization as a whole. For the history of the modern nation-state, see History of modern Greece. (From Wikipedia)
+
+		p
+			| The history of Greece encompasses the history of the territory of the modern state of Greece, as well as that of the Greek people and the areas they ruled historically.
+			br
+			| The scope of Greek habitation and rule has varied much through the ages, and, as a result, the history of Greece is similarly elastic in what it includes. Each era has its own related sphere of interest.
+
+		p. 
+			The first (proto-) Greek-speaking tribes, are generally thought to have arrived in the Greek mainland between the late 3rd and the first half of the 2nd millennium BC, probably between 1900 and 1600 BC. 
+
+		p(id="gr", class="history wiki").
+			When the Mycenaeans invaded, the area was inhabited by various non-Greek-speaking, indigenous pre-Greek people, who practiced agriculture as they had done since the 7th millennium BC.
+
+		//- If there is no tag, divs are defined by default
+		#gr.history.wiki
+			At its geographical peak, Greek civilization spread from Greece to Egypt and to the Hindu Kush mountains in Afghanistan. Since then, Greek minorities have remained in former Greek territories or other territories colonised by Greeks (e.g., Turkey, Albania, Italy, and Libya, Levant, Armenia, Georgia, etc.), and Greek emigrants have assimilated into differing societies across the globe (e.g., North America, Australia, Northern Europe, South Africa, etc.). Today most Greeks live in the modern state of Greece (independent since 1832) and Cyprus.
+
+
+
+		//- -----Lists: there are two ways to display lists-----
+
+		h3 Prehistoric Greece
+
+		ul
+			li#pre_historic
+				a(href='#') Neolithic
+			li#pre_historic
+				a(href='#') Bronze Age
+			li#pre_historic
+				a(href='#') Early Iron Age
+
+
+		h3 Ancient Greece
+
+		ul
+			li#ancient: a(href="#") Archaic Greece
+			li#ancient: a(href="#") Classical Greece
+			li#ancient: a(href="#") Hellenistic Greece
+			li#ancient: a(href="#") Roman Greece
+
+
+
+		//- -----Interpolation: Executing JavaScript in a template-----
+
+		h3 Destination...
+
+		- destination = "Crete";
+		- website = "https://en.wikipedia.org/wiki/History_of_Crete";
+
+		p Welcome to #{destination}.
+			| 29 Users rated #{destination} with 5 stars. Total: #{29 * 5} points! 
+			br
+			| For more info visit 
+			a(href="#{website}") History of Crete
+
+		p. Cities:
+
+		- cities = ['Heraklion', 'Chania', 'Rethymno', 'Ierapetra', 'Agios Nikolaos', 'Sitia']
+
+		ul
+			li#city_list: a(href="#") #{cities[0]}
+			li#city_list: a(href="#") #{cities[1]}
+			li#city_list: a(href="#") #{cities[2]}
+			li#city_list: a(href="#") #{cities[3]}
+			li#city_list: a(href="#") #{cities[4]}
+			li#city_list: a(href="#") #{cities[5]}
+
+		//- In case a block contains only the variable value or attribute values stored in an object, tags can be used with =
+
+		- summary = "The History of Crete goes back to the 7th millennium BC, preceding the ancient Minoan civilization by more than four millennia. The Minoan civilization was the first civilization in Europe and the first, in Europe, to build a palace. After the Minoan civilization was devastated by the Thera eruption, Crete developed an Ancient Greece-influenced organization of city states, then successively became part of the Roman Empire, the Byzantine Empire, the Venetian Republic, the Ottoman Empire, autonomous state, and the modern state of Greece."
+
+		p= summary
+
+		- contents = {"type": "text", "name": "cName"}
+
+		span Search contents: 
+		input(type=contents.type, name=contents.name)
+
+
+		h3 Minoan-Mycenaean Crete
+
+		//- Tags are encoded for security reasons, to turn off encoding use != or !{}
+
+		- section1 = "<i>Ancient Crete</i>"
+		- section2 = "<i>Minoan civilization</i>"
+
+		p!= section1
+
+		p !{section2}
+
+
+
+		//- -----Logic operators: if-else, unless-else, ternary operator, case (works like switch), JS script------
+
+		h3 Heraklion Archaeological Museum
+
+		p Opening Hours:
+
+		- date = new Date()
+		- hour = date.getHours()
+
+		- if ((hour >= 8) && (hour <= 15)){
+			span Museum is open
+		- } else {
+			span Museum is closed
+		- }
+
+
+		h5 Museum Cafe 
+
+		p Do you want something to drink? What about a coffee? Let's see if we can offer you one!
+
+		- age = 18
+
+		if ((age >= 16) && (age < 18))
+			p You can have a hot chocolate!
+		else if age >= 18
+			p Here you are! Enjoy your coffee!
+		else
+			p Enjoy your juice! You're too young for a coffee!
+
+
+		h5 Museum's Shop: Summer and Winter Sales
+
+		- month = date.getMonth()
+
+		unless (month == 'February' || month == 'July')
+			p Great! It's a sales period!
+		else
+			p Sorry, it's not a sales period.
+
+
+		p Special coupon sales: Get an Extra 25% Off if your discount card number ends between 102 - 139; get another product for FREE if it ends with 225.
+
+		- disCard = 129
+
+		- specialSale = ((disCard == 225) ? '100% Off' : ((disCard >= 102) && (disCard <= 139)) ? '25% Off' : '0% Off')
+
+		p You have: #{specialSale}
+
+
+		case specialSale
+			when "100% Off"
+				p <strong>Lucky you! Pick up another product you like!</strong>
+			when "25% Off"
+				p <strong>Great! Discount is automatically added to your account!</strong>
+			default
+				p <strong>Sorry, try again next month.</strong>
+		
+		script.
+			console.log('Shopping is fun!')
+
+
+
+		//- -----Loops: Iterate over data, arrays, objects; while loops iterate as long as the condition is true ------
+
+		h3 Minoan Archaeological Sites
+
+		- sites = ['Knossos', 'Phaistos', 'Malia', 'Zakros', 'Palekastro']
+
+		ul
+		- for(i = 0; i < sites.length; i++){
+			li= sites[i]
+		- }
+
+
+		h3 Minoan Architecture
+
+		- arch = ['Minoan Palaces', ' Tholos Tombs', ' Minoan Villas', ' Minoan Towns', ' Roads']
+
+		ul
+			each 
+				li= arch
+
+
+		p Article views:
+
+		- i = 0
+
+		ul
+			while i < 10
+				li= i
+				- i++;
+
+
+
+		//- -----Mixins: JavaScript functions-----
+
+		h3 Top 10 archaeological sites in Greece
+
+
+		mixin archSite(name, location)
+			li #{name} in #{location}
+
+		ul#archSites
+			+archSite("Acropolis", "Athens")
+			+archSite("Ancient Philippoi", "Macedonia")
+			+archSite("Delphi", "Mount Parnassus")
+			+archSite("Epidaurus theatre", "Peloponnese")
+			+archSite("Olympia", "Peloponnese")
+			+archSite("Knossos", "Crete")
+			+archSite("Dodoni", "Epirus")
+			+archSite("The Terrace of the Lions.", "Delos")
+			+archSite("Mykines", "Peloponnese")
+			+archSite("Vergina", "Veroia")
+
+
+
+		h3 Quick links: Things to See and Do
+		//- Receiving a variable number of arguments by turning the arguments object into an array
+
+		mixin makeList()
+			ul
+			- qlinks = Array.prototype.slice.call(arguments);
+			for link in qlinks
+				li= link
+
+		+makeList("Museums", "Archaeological sites", "Religious tourism", "Sailing", "Wellness", "Touring", "Gastronomy")
+
+		//- Include foot.jade
+		include ./foot.jade

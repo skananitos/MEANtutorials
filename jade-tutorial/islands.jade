@@ -1,0 +1,31 @@
+//- Author: Eftychia Koletsou
+//- version: 0.0.1
+//- ==========================
+
+//- Define doctype
+doctype
+
+//- Define the html tag
+html(lang="en")
+
+	//- Define the body
+	body
+			//- -----Extends: allows to replace blocks in a template-----
+			extends islandBlock
+			block title
+				h3 Greek Islands
+			block content
+				p
+					| The islands are the main characteristic of Greece's morphology and an integral part of the country's culture and tradition. Greek sovereign land includes 6,000 islands and islets scattered in the Aegean and Ionian Seas, of which only 227 islands are inhabited. This is a truly unique phenomenon for the European continent.
+
+			//- We can append to what is there
+
+			block append content2
+				p
+					| The Greek Archipelago takes up 7,500 km of the country’s total 16,000 km coastline, offering a highly diversified landscape: beaches stretching over many kilometers, sheltered bays and coves, sandy beaches with sand-dunes, pebble beaches, coastal caves with steep rocks and dark colored sand typical of volcanic soil and coastal wetlands.
+
+			//- We can prepend to what is there
+
+			block prepend footer
+				p
+					| Many of these Greek beaches have been awarded the blue flag under the Blue Flags of Europe Program, providing not only swimming, but also scuba diving, snorkeling, water skiing, sailing and windsurfing.
