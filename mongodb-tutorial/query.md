@@ -1,8 +1,3 @@
-/* 
-	Author: Eftychia Koletsou
-	version: 0.0.1
-*/
-
 # Query
 
 Find all pizzerias and show only their names (with 0 we indicate which fields we want to hide):
@@ -500,4 +495,4 @@ db.pizzeria.find(
 ```
 
 
-[Back](https://github.com/skananitos/mongodb-tutorial)
+[Back](https://github.com/skananitos/MEANtutorials/tree/master/mongodb-tutorial)
