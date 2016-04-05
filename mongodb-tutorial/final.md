@@ -1,8 +1,3 @@
-/* 
-	Author: Eftychia Koletsou
-	version: 0.0.1
-*/
-
 ## Load a script
 
 Save the *selectdb.js* file on C:\Users\user-name path. 
@@ -37,4 +32,4 @@ Use `exit` to exit from the mongo shell
 Use `Ctrl + C` to shut down the mongo server
 
 
-[Back](https://github.com/skananitos/mongodb-tutorial)
+[Back](https://github.com/skananitos/MEANtutorials/tree/master/mongodb-tutorial)
