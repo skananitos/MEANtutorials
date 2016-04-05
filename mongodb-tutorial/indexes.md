@@ -1,8 +1,3 @@
-/* 
-	Author: Eftychia Koletsou
-	version: 0.0.1
-*/
-
 # Indexes
 
 Create a combound index based first on pizzeria's review and second on pizzeria's name. Then, search for all pizzerias that got "very good" as review:
@@ -45,4 +40,4 @@ Drop "review_1_pizzeria_1" index:
 `db.pizzeria.dropIndex(review_1_pizzeria_1)`
 
 
-[Back](https://github.com/skananitos/mongodb-tutorial)
+[Back](https://github.com/skananitos/MEANtutorials/tree/master/mongodb-tutorial)
