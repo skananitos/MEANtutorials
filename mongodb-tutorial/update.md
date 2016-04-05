@@ -1,8 +1,3 @@
-/* 
-	Author: Eftychia Koletsou
-	version: 0.0.1
-*/
-
 # Update a document
 
 Pizzeria VENEZIA offers a new pizza called VESUVIOS:
@@ -152,4 +147,4 @@ db.pizzeria.update(
 `db.pizzeria.update({"name":"ROMA"}, {"$pull": {"rating":2}})`
 
 
-[Back](https://github.com/skananitos/mongodb-tutorial)
+[Back](https://github.com/skananitos/MEANtutorials/tree/master/mongodb-tutorial)
