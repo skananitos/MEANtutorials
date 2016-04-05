@@ -1,8 +1,3 @@
-/* 
-	Author: Eftychia Koletsou
-	version: 0.0.1
-*/
-
 # A Brief Tutorial on MongoDB
 
 This tutorial is written for Windows OS users. Users of other OS may find some differences.
