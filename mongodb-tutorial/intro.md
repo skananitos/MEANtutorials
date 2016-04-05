@@ -1,18 +1,13 @@
-/* 
-	Author: Eftychia Koletsou
-	version: 0.0.1
-*/
-
 ## Start MongoDB Server
 
-Open a new CMD window and start the server by giving the `mongod` command. 
+Open a new terminal/cmd window and start the server by giving the `mongod` command. 
 
 
 ## Import data
 
 Retrieve the data from the **dataset.json** file and save to a file named pizzeria-dataset.json on your C:\Users\user-name path (user-name is the name that you use on your PC).
 
-Open another CMD window and use the following commant to insert the documents into the *pizzeria* collection in the *testdb* database. If the collection already exists in the *testdb* database the operation will be **drop** the *pizzeria* collection first.
+Open another terminal/cmd window and use the following commant to insert the documents into the *pizzeria* collection in the *testdb* database. If the collection already exists in the *testdb* database the operation will be **drop** the *pizzeria* collection first.
 
 `mongoimport --db testdb --collection pizzeria --drop --file pizzeria-dataset.json`
 
@@ -145,4 +140,4 @@ We want to delete pizzeria NAPOLITANA:
 `db.pizzeria.remove({"name":"NAPOLITANA"})`
 
 
-[Back](https://github.com/skananitos/mongodb-tutorial)
+[Back](https://github.com/skananitos/MEANtutorials/tree/master/mongodb-tutorial)
